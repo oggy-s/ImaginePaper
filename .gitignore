@@ -1,0 +1,14 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+## front_end
+
+
+## back_end(node_server)
+# https://github.com/github/gitignore/blob/master/Node.gitignore
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+.env.test
