@@ -1,0 +1,22 @@
+{
+  "name": "imagine_paper_server",
+  "version": "1.0.0",
+  "description": "oggy's imagine paper node server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oggy-s/ImaginePaper.git"
+  },
+  "keywords": [
+    "ImaginePaper"
+  ],
+  "author": "jw.lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oggy-s/ImaginePaper/issues"
+  },
+  "homepage": "https://github.com/oggy-s/ImaginePaper#readme"
+}
