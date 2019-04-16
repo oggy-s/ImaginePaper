@@ -13,8 +13,8 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 db.sequelize = sequelize;  // db 접속 정보
 db.Sequelize = Sequelize;  // 모듈
 
-db.Category = require('./paper')(sequelize, Sequelize);
+db.Category = require('./category')(sequelize, Sequelize);
 db.Paper = require('./paper')(sequelize, Sequelize);
-db.Comment = require('./paper')(sequelize, Sequelize);
+db.Comment = require('./comment')(sequelize, Sequelize);
 
 module.exports = db;

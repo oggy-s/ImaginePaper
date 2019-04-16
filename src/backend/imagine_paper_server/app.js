@@ -6,11 +6,13 @@ const sequelize = require('./models').sequelize;
 const app = express();
 const PORT = 8335;
 
+const routes = require('./routes');
+
 app.use(cors);
 app.use(express.json());
 sequelize.sync();
 
-app.use(router);
+app.use(routes);
 
 // 404 
 app.use((req, res, next) => {

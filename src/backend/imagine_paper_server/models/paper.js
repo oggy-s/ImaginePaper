@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('paper', {
+    return sequelize.define('tb_imgp_paper', {
         writer: {
             type: DataTypes.STRING(64),
             allowNull: false,

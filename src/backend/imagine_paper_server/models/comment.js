@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    return sequelize.define('comment', {
+    return sequelize.define('tb_imgp_comment', {
         writer: {
             type: DataTypes.STRING(64),
             allowNull: false,
