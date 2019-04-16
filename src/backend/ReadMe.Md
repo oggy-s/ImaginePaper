@@ -2,6 +2,8 @@ backend
 
 node server
 
-npm list
- > npm install --save-dev nodemon
+npm global install list
+ > npm install -g express-generator
+ > npm install -g sequelize-cli
+
   
