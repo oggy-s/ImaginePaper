@@ -24,9 +24,13 @@ app.use('/apitest', express.static(path.join(__dirname, './node_modules/swagger-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+    // case 1
     // res.status = 404;
     // next(Error('not found'));
-    next(createError(404));
+
+    const err = new Error('Not Found API');
+    err.status = 404;
+    next(err);
 });
 
 // error handler
