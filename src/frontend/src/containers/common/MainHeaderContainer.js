@@ -24,7 +24,7 @@ class MainHeaderContainer extends Component {
     handleToggleDrawer = () => {
         console.log("====== header - handleToggleDrawer ======")
         const { drawerOpen } = this.state;
-        console.log("drawerOpen : ", drawerOpen )
+        // console.log("drawerOpen : ", drawerOpen )
         this.setState({
             drawerOpen: !drawerOpen,
         });
@@ -33,6 +33,7 @@ class MainHeaderContainer extends Component {
     render() {
     
         const { drawerOpen } = this.state;
+        const { history } = this.props;
         
         const { 
             handleLeftClick,

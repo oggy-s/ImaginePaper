@@ -25,24 +25,60 @@ const styles = {
 
 const MainDrawers = ({isOpen, toggle}) => {
 
+  const testFunc = (e) => {
+    console.log("====== testFunc ======")
+    const type = e.target.parentNode.parentNode.parentNode.id;
+    console.log("clicked ", type);
+  
+
+  }
   
   const sideList = (
     <div >
+      <div>
+        뿌잉뿌잉<br></br>
+        왕좌의 게임 <br></br>
+        2019년 4월 11일 23:00시 본방 <br></br>
+        11시라서 운동갈수있따~<br></br>
+        6시 퇴근하고 저녁먹구 <br></br>
+        빠르게 운동하고 <br></br>
+        편의점들려서 간식사구 <br></br>
+        왕좌의게임 본방 사수!! <br></br>
+        헷~<br></br>
+        결론은 커스터마이징 가능! <br></br>
+        리덕스로 로그인상태 가져와서 <br></br>
+        메뉴 목록을 바꿔주도록 하자~ <br></br>
+      </div>
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {['로그인/회원가입',].map((text, index) => (
+          <div id={text} key={index}>
+            <ListItem button key={text} onClick={testFunc}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </div>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
+        {['마이페이지', '즐겨찾기'].map((text, index) => (
+          <div id={text} key={index}>
+            <ListItem button key={text} onClick={testFunc}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </div>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['상상도화지', ].map((text, index) => (
+          <div id={text} key={index}>
+            <ListItem button key={text}>
+              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          </div>
         ))}
       </List>
     </div>
@@ -53,7 +89,7 @@ const MainDrawers = ({isOpen, toggle}) => {
 
   return (
     <div>
-        <Button onClick={toggle}>Open Left</Button>
+        
         <Drawer open={isOpen} onClose={toggle}>
           <div
             tabIndex={0}
