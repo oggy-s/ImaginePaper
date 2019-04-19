@@ -1,0 +1,21 @@
+.app-navi-wrap{
+    
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(58, 90, 177);
+    
+}
+
+.app-navi-desc {
+    color: white;
+    padding: 1rem;
+}
+.app-navi {
+    width: auto;
+    background-color: rgb(211, 88, 205);
+    padding: 1rem;
+    margin: 0.1rem;
+}
+
