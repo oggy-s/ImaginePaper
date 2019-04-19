@@ -20,8 +20,6 @@ sequelize.sync();
 
 app.use(routes);
 
-app.use('/apitest', express.static(path.join(__dirname, './node_modules/swagger-ui/dist')));
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     // case 1
