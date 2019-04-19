@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
 import { MainPage, LoginPage, MyPage, FavoListPage, PaperListPage, PaperWritePage, PaperPage, NotFoundPage } from 'pages'
-import  MainHeader  from 'components/common/MainHeader'
+import  MainHeaderContainer  from 'containers/common/MainHeaderContainer'
 import './App.css';
 
 
@@ -27,7 +27,7 @@ class App extends Component {
         </div>
 
         {/* Main Header 공용으로 할까?  */}
-        <MainHeader/>
+        <MainHeaderContainer/>
 
         <Switch >
           <Route exact path="/" component={MainPage} />
