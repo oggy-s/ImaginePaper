@@ -30,7 +30,7 @@ class Login extends Component {
 
   componentDidMount = () => {
     console.log("====== Login Did Mount ======")
-    this.handleNVInit();
+    // this.handleNVInit();
   }
 
 
@@ -73,7 +73,7 @@ class Login extends Component {
         familyName
         givenName
         googleId
-        imgageUrl
+        imageUrl
         name
       tokenId
       tokenObj
@@ -112,38 +112,38 @@ class Login extends Component {
 
 
   //naver
-  handleNVInit = () => {
-    let naverLogin = new naver.LoginWithNaverId({
-      clientId: nvKey,
-      // callbackUrl:'http://localhost:3000',
-      callbackHandle: true,
-      isPopup: true,
-      loginButton: {color: 'green', type: 3, height: 50}
-    })
+  // handleNVInit = () => {
+  //   let naverLogin = new naver.LoginWithNaverId({
+  //     clientId: nvKey,
+  //     // callbackUrl:'http://localhost:3000',
+  //     callbackHandle: true,
+  //     isPopup: true,
+  //     loginButton: {color: 'green', type: 3, height: 50}
+  //   })
 
-    naverLogin.init();
+  //   naverLogin.init();
 
-    window.addEventListener('load', function() {
+  //   window.addEventListener('load', function() {
       
-      naverLogin.getLoginStatus(function (status) {
-        console.log('status : ', status)
-        if (status) {
-					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-					var email = naverLogin.user.getEmail();
-					if( email == undefined || email == null) {
-						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-						naverLogin.reprompt();
-						return;
-					}
+  //     naverLogin.getLoginStatus(function (status) {
+  //       console.log('status : ', status)
+  //       if (status) {
+	// 				/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+	// 				var email = naverLogin.user.getEmail();
+	// 				if( email == undefined || email == null) {
+	// 					alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+	// 					/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+	// 					naverLogin.reprompt();
+	// 					return;
+	// 				}
 
-					window.location.replace('http://localhost:3000');
-				} else {
-					console.log("callback 처리에 실패하였습니다.");
-				}
-      })
-    })
-  }
+	// 				window.location.replace('http://localhost:3000');
+	// 			} else {
+	// 				console.log("callback 처리에 실패하였습니다.");
+	// 			}
+  //     })
+  //   })
+  // }
 
   handleNVCallback = (res) => {
     console.log("====== handleNVCallback ======")
@@ -164,8 +164,8 @@ class Login extends Component {
     } = this;
 
     return(
-      <div>
-        Login~
+      <div className="login-page-wrapper">
+        
         <FacebookLogin
           appId={fbKey}
           autoLoad={false}
@@ -173,6 +173,11 @@ class Login extends Component {
           scope="public_profile"
           callback={handleFBCallback}
           icon="fa-facebook"
+          render={renderProps => (
+            <button onClick={renderProps.onClick}>This is my custom FB button</button>
+          )}
+          cssClass="my-facebook-button-class"
+          textButton="페이스북 로그인"
         />
 
         <GoogleLogin
@@ -192,7 +197,7 @@ class Login extends Component {
           buttonText="Login with Kakao"
         />
 
-        <div id='naverIdLogin'></div>
+        {/* <div id='naverIdLogin'></div> */}
       </div>
     )
   } 
