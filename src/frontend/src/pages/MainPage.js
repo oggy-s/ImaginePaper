@@ -5,6 +5,7 @@ const MainPage = () => {
         <div>
             Main Page
             {/*  mainfeat */}
+            {/* 한번더 소스트리 테스트 */}
         </div>
     )
 }
