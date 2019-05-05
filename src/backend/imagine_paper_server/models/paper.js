@@ -3,13 +3,18 @@ module.exports = (sequelize, DataTypes) => {
         writer: {
             type: DataTypes.STRING(64),
             allowNull: false,
-            unique: true
+            // primaryKey: true,
+            // unique: true
         },
         category_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            // primaryKey: true,
+            // unique: true
         },
+        title: {
+            type: DataTypes.STRING(64)
+        }, 
         hit: {
             type: DataTypes.INTEGER.UNSIGNED,
             defaultValue: 0

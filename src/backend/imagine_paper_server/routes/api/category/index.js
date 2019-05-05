@@ -1,4 +1,5 @@
 const { Category } = require('../../../models');
+const { Utils, Code } = require('../../../common');
 
 const LOG_TAG = '[API-Category] ';
 
@@ -23,26 +24,25 @@ const create = async (req, res) => {
     
     // const categoryKey = req.body.key;
     const categoryName = req.body.name;
-
+    let retObj = {};
     if(categoryName != null && categoryName != '') {
         var regType = /^[A-Za-z0-9+]*$/;
         if (regType.test(categoryName) && categoryName.length < 64) { 
             isValid = true;
-            
-            result.code = 1;
-            result.reason = 'success';
         }
         else {
-            result.code = -1;
-            result.reason = 'category name type error.';
+            retObj = Utils.makeErrorResult(
+                Code.PARAM_INVALID_CATEGORY_NAME,
+                'category name type error.'
+                );
         }
     }
     else {
-        result.code = -2;
-        result.reason = 'category name is empty.';
+        retObj = Utils.makeErrorResult(
+            Code.PARAM_EMPTY_CATEGORY_NAME,
+            'category name is empty.'
+            );
     } 
-
-    result.result = isValid;
 
     if(isValid) {
         const insertInfo = await Category.create({
@@ -52,12 +52,13 @@ const create = async (req, res) => {
         console.log(LOG_TAG + 'insertInfo:: ', insertInfo);
         
         res.status(201);
+        retObj = Utils.makeSuccessResult({categoryId: insertInfo.dataValues.id});
     }
     else {
         res.status(501);
     }
 
-    res.json({result});
+    res.json(retObj);
     
     console.log(LOG_TAG + 'create (end)');
 };
@@ -73,13 +74,7 @@ const create = async (req, res) => {
  * @description 카테고리 리스트 조회
  */
 const list = async (req, res) => {
-    console.log(LOG_TAG + 'list (start)');
-
-    const result = {
-        code: 1,
-        reason: 'success',
-        result: true  
-    };
+    console.log(LOG_TAG + 'list (start)');    
 
     const categoryList = await Category.findAll({
         where: {deleted_at: { $ne: null }}
@@ -87,8 +82,10 @@ const list = async (req, res) => {
 
     const categoryData = categoryList.map(list => list.dataValues);
     console.log('categoryData: ', categoryData);
+    
+    const retObj = Utils.makeSuccessResult({categories: categoryData});
 
-    res.status(201).json({ result, categories: categoryData });
+    res.status(201).json(retObj);
 
     console.log(LOG_TAG + 'list (end)');
 };
@@ -118,17 +115,10 @@ const detail = async (req, res) => {
     console.log(LOG_TAG + 'get category Item:: ', categoryItem);
 
     if(categoryItem != null && categoryItem.dataValues != null) {
-        result.code = 1;
-        result.reason = 'success';
-        result.result = true;
-
-        res.status(201).json({ result, category: categoryItem.dataValues });
+        ret.status(201).json(Utils.makeSuccessResult({category: categoryItem.dataValues}));
     }
     else {
-        result.code = -3;
-        result.reason = 'category is not exist.';
-        result.result = false;
-        res.status(401).json({result});
+        res.status(401).json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'category is not exist.'));
     }    
 
     console.log(LOG_TAG + 'detail (end)');
@@ -161,9 +151,7 @@ const modify = async (req, res) => {
     });
 
     if(!isExistCategory) {
-        result.code = -3;
-        result.reason = 'category is not exist.';
-        result.result = false;    
+        res.status(404).json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'category is not exist.'));
         return res.status(404).json({result});
     }
     
@@ -172,11 +160,7 @@ const modify = async (req, res) => {
         { where: { id: categoryId } }
     );
 
-    result.code = 1;
-    result.reason = 'success';
-    result.result = true;
-
-    res.json(result);
+    res.json(Utils.makeSuccessResult());
 
     console.log(LOG_TAG + 'modify (end)');
 };
@@ -201,7 +185,8 @@ const destroy = async (req, res) => {
 
     await Category.destroy({ where: {id} });
 
-    res.status(204).end();
+    // res.status(204).end();
+    res.status(204).json(makeSuccessResult());
 
     console.log(LOG_TAG + 'destroy (end)');
 };

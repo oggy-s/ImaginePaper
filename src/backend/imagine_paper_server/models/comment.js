@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         paper_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            // primaryKey: true,
             unique: true
         }, 
         parent_id: {
