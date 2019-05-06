@@ -17,7 +17,7 @@ class App extends Component {
         <div className='app-navi-wrap'>
           <div className='app-navi-desc'> Page Test Navigation </div>
           <div className='app-navi'><NavLink exact to="/" activeClassName="menu-active"> 홈 </NavLink></div>
-          <div className='app-navi'><NavLink exact to="/main" activeClassName="menu-active"> 메인</NavLink></div>
+          {/* <div className='app-navi'><NavLink exact to="/main" activeClassName="menu-active"> 메인</NavLink></div> */}
           <div className='app-navi'><NavLink exact to="/login" activeClassName="menu-active"> 로그인 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/mypage" activeClassName="menu-active"> 마이페이지  </NavLink></div>
           <div className='app-navi'><NavLink exact to="/favolist" activeClassName="menu-active">즐겨찾기 </NavLink></div>

@@ -1,11 +1,13 @@
 import React from 'react';
+import MainSideScroll from '../components/mainSideScroll/MainSideScroll';
 
 const MainPage = () => {
     return (
         <div>
-            Main Page
-            {/*  mainfeat */}
-            {/* 한번더 소스트리 테스트 */}
+            좋아요
+            <MainSideScroll/>
+            최신
+            <MainSideScroll />
         </div>
     )
 }
