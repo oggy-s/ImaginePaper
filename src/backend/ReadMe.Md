@@ -1,8 +1,7 @@
-backend
+# ImaginePaper Server 
+ > backend, node server
 
-node server
-
-# API List (회의 항목)
+## API List (회의 항목)
  * 메인화면(좋아요 많은글 1, 최신글 1) 항목
  * 좋아요 리스트(많은순 3~5개)
  * 최신글 리스트(최신순 2~5개)
@@ -19,7 +18,7 @@ node server
  * 검색(대/중?소 2건) ???
  * 카테고리 조회
 
-npm global install list
- > npm install -g express-generator
- > npm install -g sequelize-cli
- > npm install -g nodemon
+### npm global install list
+ * npm install -g express-generator
+ * npm install -g sequelize-cli
+ * npm install -g nodemon
