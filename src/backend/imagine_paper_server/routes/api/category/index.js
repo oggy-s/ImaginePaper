@@ -1,4 +1,4 @@
-const { Category } = require('../../../models');
+const { Category, Sequelize: {Op} } = require('../../../models');
 const { Utils, Code } = require('../../../common');
 
 const LOG_TAG = '[API-Category] ';
@@ -77,7 +77,7 @@ const list = async (req, res) => {
     console.log(LOG_TAG + 'list (start)');    
 
     const categoryList = await Category.findAll({
-        where: {deleted_at: { $ne: null }}
+        where: {deleted_at: { [Op.eq]: null} }
     });
 
     const categoryData = categoryList.map(list => list.dataValues);
@@ -106,16 +106,15 @@ const detail = async (req, res) => {
     console.log(LOG_TAG + 'req.params:: ', req.params);
     console.log(LOG_TAG + 'req.body:: ', req.body);
 
-    const result = {};
     const id = req.params.categoryid;
     const categoryItem = await Category.findOne({
-        where: {id, deleted_at: { $ne: null }}
+        where: {id, deleted_at: { [Op.eq]: null} }
     });
 
     console.log(LOG_TAG + 'get category Item:: ', categoryItem);
 
     if(categoryItem != null && categoryItem.dataValues != null) {
-        ret.status(201).json(Utils.makeSuccessResult({category: categoryItem.dataValues}));
+        res.status(201).json(Utils.makeSuccessResult({category: categoryItem.dataValues}));
     }
     else {
         res.status(401).json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'category is not exist.'));
@@ -147,7 +146,7 @@ const modify = async (req, res) => {
     
 
     const isExistCategory = await Category.findOne({
-        where: {id: categoryId, deleted_at: { $ne: null }} 
+        where: {id: categoryId, deleted_at: { [Op.eq]: null} }
     });
 
     if(!isExistCategory) {

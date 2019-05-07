@@ -22,7 +22,7 @@ const create = async (req, res) => {
     console.log(LOG_TAG + 'req.params:: ', req.params);
     console.log(LOG_TAG + 'req.body:: ', req.body);
 
-    const categoryId = req.body.category_id;
+    const categoryId = req.body.categoryId;
 
     console.log(LOG_TAG + 'categoryId:: ', categoryId);
 
@@ -35,9 +35,9 @@ const create = async (req, res) => {
         return;
     }
 
-    const { writer, category_id, title, contents } = req.body;
+    const { writer, title, contents } = req.body;
     const insertInfo = await Paper.create({
-        writer, category_id, title, contents
+        writer, categoryId, title, contents
     });
 
     console.log(LOG_TAG + 'insertInfo:: ', insertInfo);
@@ -53,9 +53,26 @@ const list = async (req, res) => {
     console.log(LOG_TAG + 'req.params:: ', req.params);
     console.log(LOG_TAG + 'req.body:: ', req.body);
 
-    
+    const categoryId = req.params.categoryid;
+    const categoryItem = await getCategoryItem(categoryId);
 
-    console.log('categoryItem:: ', categoryItem);
+    console.log(LOG_TAG + 'categoryItem:: ', categoryItem);
+    if(categoryItem == null) {
+        res.status(501);
+        res.json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'not found category'));
+        return;
+    }
+
+    const paperList = await Paper.findAll({
+        where: {category_id: categoryId, deleted_at: { [Op.eq]: null} }
+    });
+
+    const paperData = paperList.map(list => list.dataValues);
+    console.log('paperData: ', paperData);
+    
+    const retObj = Utils.makeSuccessResult({papers: paperData});
+
+    res.status(201).json(retObj);
 
     console.log(LOG_TAG + 'list (end)');
 };
@@ -66,6 +83,31 @@ const detail = async (req, res) => {
     console.log(LOG_TAG + 'req.params:: ', req.params);
     console.log(LOG_TAG + 'req.body:: ', req.body);
 
+    const categoryId = req.params.categoryid;
+    const categoryItem = await getCategoryItem(categoryId);
+
+    console.log(LOG_TAG + 'categoryItem:: ', categoryItem);
+    if(categoryItem == null) {
+        res.status(501);
+        res.json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'not found category'));
+        return;
+    }
+
+
+    const paperId = req.params.paperid;
+    const paperItem = await Paper.findOne({
+        where: {id: paperId, category_id: categoryId, deleted_at: { [Op.eq]: null} }
+    });
+
+    console.log(LOG_TAG + 'get paper Item:: ', paperItem);
+
+    if(paperItem != null && paperItem.dataValues != null) {
+        res.status(201).json(Utils.makeSuccessResult({paper: paperItem.dataValues}));
+    }
+    else {
+        res.status(401).json(Utils.makeErrorResult(Code.NOT_FOUND_PAPER, 'paper item is not exist.'));
+    } 
+    
     console.log(LOG_TAG + 'detail (end)');
 };
 
