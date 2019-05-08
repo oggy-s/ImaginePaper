@@ -139,11 +139,8 @@ const modify = async (req, res) => {
     console.log(LOG_TAG + 'req.params:: ', req.params);
     console.log(LOG_TAG + 'req.body:: ', req.body);
 
-    const result = {};
-
     const categoryId = req.params.categoryid;
     const categoryName = req.body.name;
-    
 
     const isExistCategory = await Category.findOne({
         where: {id: categoryId, deleted_at: { [Op.eq]: null} }
@@ -151,7 +148,7 @@ const modify = async (req, res) => {
 
     if(!isExistCategory) {
         res.status(404).json(Utils.makeErrorResult(Code.NOT_FOUND_CATEGORY, 'category is not exist.'));
-        return res.status(404).json({result});
+        return;
     }
     
     await Category.update( 
