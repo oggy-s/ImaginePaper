@@ -14,6 +14,10 @@ const CODE = (_) => {
         PARAM_EMPTY_CATEGORY_NAME: -1001,
         PARAM_INVALID_CATEGORY_NAME: -1002,
         NOT_FOUND_CATEGORY: -1003,
+
+        PARAM_EMPTY_PAPER_ID: -1101,
+        PARAM_INVALID_PAPER_ID: -1102,
+        NOT_FOUND_PAPER: -1103,
     };
 };
 

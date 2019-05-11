@@ -16,5 +16,6 @@ db.Sequelize = Sequelize;  // 모듈
 db.Category = require('./category')(sequelize, Sequelize);
 db.Paper = require('./paper')(sequelize, Sequelize);
 db.Comment = require('./comment')(sequelize, Sequelize);
+db.Member = require('./member')(sequelize, Sequelize);
 
 module.exports = db;
