@@ -36,3 +36,34 @@
   * npm install -g sequelize-cli
   * npm install -g nodemon
   * npm install -g cross-env  # window 용
+
+
+### env file info
+~~~
+########################################
+## Server Info
+########################################
+# dev
+DEV_NODE_PORT=
+
+# prod
+PROD_NODE_PORT=
+
+
+########################################
+## DataBase Info
+########################################
+# dev
+DEV_DB_HOST=
+DEV_DB_NAME=
+DEV_DB_DIALECT=
+DEV_DB_USER=
+DEV_DB_PASSWORD=
+
+# prod
+PROD_DB_HOST=
+PROD_DB_NAME=
+PROD_DB_DIALECT=
+PROD_DB_USER=
+PROD_DB_PASSWORD=
+~~~
