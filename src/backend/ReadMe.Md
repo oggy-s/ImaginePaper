@@ -3,7 +3,7 @@
 
 ## API List (회의 항목)
  > API Default prefix: /imgp/api
-  - ex) 메인화면 API: /imgp/api/main-paper
+ > - ex) 메인화면 API: /imgp/api/main-paper
 
  * 메인화면(좋아요 많은글 1, 최신글 1) 항목
   - [GET] /imgp/api/main-paper
