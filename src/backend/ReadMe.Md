@@ -35,3 +35,4 @@
   * npm install -g express-generator
   * npm install -g sequelize-cli
   * npm install -g nodemon
+  * npm install -g cross-env  # window 용

@@ -5,11 +5,13 @@ const sequelize = require('./models').sequelize;
 const path = require('path');
 // var cookieParser = require('cookie-parser');
 // var logger = require('morgan');
-const env = require('dotenv').config();
 const Common = require('./common');
 
+require('dotenv').config();
+
 const app = express();
-const PORT =  8335;
+const env = process.env.NODE_ENV || 'development';
+const PORT = ((env === 'production') ? process.env.PROD_NODE_PORT : process.env.DEV_NODE_PORT) || 8335;
 
 const routes = require('./routes');
 
