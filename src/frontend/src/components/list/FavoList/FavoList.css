@@ -1,0 +1,41 @@
+.favo-list{
+
+}
+
+.favo-item{
+    padding:1.5rem;
+    transition: all .15s ease-in;
+    
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+    color: gray;
+}
+
+a{
+    transition: all .15s ease-in;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover{
+    color: lightblue;
+    border-bottom: 1px solid  lightcoral;
+}
+
+.favo-date{
+    font-size: 0.85rem;
+    color: lightcoral;
+}
+
+p{
+    font-weight: 300;
+    color: lightgreen;
+}
+
+.tags{
+    font-size: 0.85rem;
+    color: lightcoral;
+}

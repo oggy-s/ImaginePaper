@@ -1,0 +1,11 @@
+.list-wrapper{
+    width:1024px;
+    margin: 0 auto;
+
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    /* background-color: green; */
+}
