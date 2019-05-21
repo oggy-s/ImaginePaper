@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MainHeader from 'components/common/MainHeader';
 import MainDrawers from 'components/common/MainDrawers';
-
+import {withRouter} from 'react-router-dom';
 
 class MainHeaderContainer extends Component {
     state={
@@ -30,6 +30,14 @@ class MainHeaderContainer extends Component {
         });
       };
 
+    handleMoveTo = (target) => {
+        const { history } = this.props;
+
+        console.log("history : ", history)
+        // history.back();
+        history.push(target);
+    }
+
     render() {
     
         const { drawerOpen } = this.state;
@@ -39,7 +47,8 @@ class MainHeaderContainer extends Component {
             handleLeftClick,
             handleTitleClick,
             handleRightClick,
-            handleToggleDrawer
+            handleToggleDrawer,
+            handleMoveTo,
         } = this;
 
 
@@ -54,10 +63,11 @@ class MainHeaderContainer extends Component {
                 <MainDrawers
                     isOpen = { drawerOpen }
                     toggle = { handleToggleDrawer}
+                    handleMoveTo = {handleMoveTo}
                 />
             </div>
         )
     }
 }
 
-export default MainHeaderContainer;
+export default withRouter(MainHeaderContainer);

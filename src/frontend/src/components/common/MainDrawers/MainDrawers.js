@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainDrawers.css';
 
+
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -23,12 +24,37 @@ const styles = {
 };
 
 
-const MainDrawers = ({isOpen, toggle}) => {
+const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
+
+
 
   const testFunc = (e) => {
     console.log("====== testFunc ======")
     const type = e.target.parentNode.parentNode.parentNode.id;
     console.log("clicked ", type);
+
+    // const { history } = this.props;
+    // const { history } = this.props;
+
+    switch(type) {
+      case "10-0":
+        //
+        handleMoveTo('/login');
+      break;
+      case "20-0":
+        //
+      break;
+      case "20-1":
+        //
+      break;
+      case "20-2": 
+        //
+      break;
+      case "30-0":
+        //
+      break;
+      default:
+    }
   
 
   }
@@ -50,8 +76,9 @@ const MainDrawers = ({isOpen, toggle}) => {
         메뉴 목록을 바꿔주도록 하자~ <br></br>
       </div>
       <List>
+        {/* 로그인 10-0 */}
         {['로그인/회원가입',].map((text, index) => (
-          <div id={text} key={index}>
+          <div id={'10-'+index} key={index}>
             <ListItem button key={text} onClick={testFunc}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -61,8 +88,9 @@ const MainDrawers = ({isOpen, toggle}) => {
       </List>
       <Divider />
       <List>
-        {['마이페이지', '즐겨찾기'].map((text, index) => (
-          <div id={text} key={index}>
+        {/* 마이페이지 20-0, 내글 20-1 즐겨찾기 20-2 */}
+        {['마이페이지', '내글', '즐겨찾기'].map((text, index) => (
+          <div id={'20-'+index} key={index}>
             <ListItem button key={text} onClick={testFunc}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
@@ -72,9 +100,10 @@ const MainDrawers = ({isOpen, toggle}) => {
       </List>
       <Divider />
       <List>
+        {/* 마이페이지 30-0 */}
         {['상상도화지', ].map((text, index) => (
-          <div id={text} key={index}>
-            <ListItem button key={text}>
+          <div id={'30-'+index} key={index}>
+            <ListItem button key={text} onClick={testFunc}>
               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
