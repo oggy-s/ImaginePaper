@@ -43,6 +43,10 @@
 ########################################
 ## Server Info
 ########################################
+# common
+COOKIE_SECRET=
+JWT_KEY=
+
 # dev
 DEV_NODE_PORT=
 
@@ -66,4 +70,13 @@ PROD_DB_NAME=
 PROD_DB_DIALECT=
 PROD_DB_USER=
 PROD_DB_PASSWORD=
+
+
+########################################
+## SNS Info
+########################################
+SNS_DEV_KEY_GOOGLE=
+SNS_DEV_KEY_FACEBOOK=
+SNS_DEV_KEY_KAKAO=
+
 ~~~
