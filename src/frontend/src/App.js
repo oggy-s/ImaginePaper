@@ -15,7 +15,7 @@ class App extends Component {
         {/* test */}
         
         <div className='app-navi-wrap'>
-          <div className='app-navi-desc'> Page Test Navigation </div>
+          {/* <div className='app-navi-desc'> Page Test Navigation </div> */}
           <div className='app-navi'><NavLink exact to="/" activeClassName="menu-active"> 홈 </NavLink></div>
           {/* <div className='app-navi'><NavLink exact to="/main" activeClassName="menu-active"> 메인</NavLink></div> */}
           <div className='app-navi'><NavLink exact to="/login" activeClassName="menu-active"> 로그인 </NavLink></div>
@@ -28,7 +28,9 @@ class App extends Component {
         </div>
 
         {/* Main Header 공용으로 할까?  */}
-        <MainHeaderContainer/>
+        <div className='app-main-header'>
+          <MainHeaderContainer/>
+        </div>
 
         <Switch >
           <Route exact path="/" component={MainPage} />

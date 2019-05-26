@@ -32,8 +32,12 @@ const styles = {
     root: {
       flexGrow: 1,
     },
+    bg: {
+      backgroundColor: '#3e3e3e'
+    },
     grow: {
       flexGrow: 1,
+      textAlign: 'left'
     },
     menuButton: {
       marginLeft: -12,
@@ -45,15 +49,15 @@ const MainHeader = (props) => {
     const { classes, leftClick, titleClick, rightClick, } = props;
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.bg}>
                 <Toolbar>
                     <IconButton className={classes.menuButton} color="inherit" aria-label="Menu" onClick={leftClick}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" color="inherit" className={classes.grow} onClick={titleClick}>
-                        ImaginePaper
+                        상상도화지
                     </Typography>
-                    <Button color="inherit" onClick={rightClick}>Home</Button>
+                    {/* <Button color="inherit" onClick={rightClick}>Home</Button> */}
                 </Toolbar>
             </AppBar>
         </div>

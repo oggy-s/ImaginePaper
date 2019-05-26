@@ -1,3 +1,7 @@
+body {
+    font-family: Roboto, sans-serif;
+}
+
 .app-navi-wrap{
     
     font-weight: 600;
@@ -16,7 +20,13 @@
 .app-navi {
     width: auto;
     background-color: rgb(211, 88, 205);
-    padding: 1rem;
+    padding: 0rem;
     margin: 0.1rem;
+    /* height:10px; */
 }
 
+
+.app-main-header {
+    position: sticky;
+    top: 0;
+}
