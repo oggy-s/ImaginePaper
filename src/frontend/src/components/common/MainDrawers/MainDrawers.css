@@ -23,6 +23,14 @@
     padding-bottom: 1rem;
 
 }
+
+.drawer-logo:hover  {
+    cursor: pointer;
+}
+.drawer-logo-text:hover{
+    cursor: pointer;
+}
+
 .drawer-logo {
     width: 2rem;
     padding: 0.5rem;
