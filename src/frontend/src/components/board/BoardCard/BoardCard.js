@@ -46,17 +46,37 @@ const styles = theme => ({
   },
   favoritePost: {
     color: '#f50057',
-  }
+  },
+  likeActive: {
+    color: '#4267b2',
+  },
+  dislikeActive: {
+    color: '#91b6ff',
+  },
 });
 
 class BoardCard extends React.Component {
-  state = { expanded: false,  favorite: false};
+  state = { expanded: false,  favorite: false, like: false, dislike: false};
 
   handleExpandClick = () => {
     this.setState(state => ({ expanded: !state.expanded }));
   };
   handleFavoriteClick = () => {
     this.setState(state => ({ favorite: !state.favorite }));
+  };
+  handleLikeClick = (e) => {
+    if(this.state.dislike){
+      this.setState(state => ({ like: !state.like, dislike: !state.dislike }));
+    }else {
+      this.setState(state => ({ like: !state.like }));
+    }
+  };
+  handleDislikeClick = (e) => {
+    if(this.state.like){
+      this.setState(state => ({ like: !state.like, dislike: !state.dislike }));
+    }else {
+      this.setState(state => ({ dislike: !state.dislike }));
+    }
   };
 
   render() {
@@ -103,12 +123,27 @@ class BoardCard extends React.Component {
           </CardContent>
         </Collapse>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Share">
-            <ThumbUpIcon />
+          
+          <IconButton aria-label="Like"
+            className={classnames(classes.root, {
+              [classes.likeActive]: this.state.like,
+            })}
+            onClick={this.handleLikeClick}
+            aria-label="Show more"
+          >
+            <ThumbUpIcon />            
           </IconButton>
-          <IconButton aria-label="Share">
+
+          <IconButton aria-label="Dislike"
+            className={classnames(classes.root, {
+              [classes.dislikeActive]: this.state.dislike,
+            })}
+            onClick={this.handleDislikeClick}
+            aria-label="Show more"
+          >
             <ThumbDownIcon />
           </IconButton>
+
           <IconButton
             className={classnames(classes.expand, {
               [classes.expandOpen]: this.state.expanded,
