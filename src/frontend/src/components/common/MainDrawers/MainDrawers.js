@@ -14,6 +14,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+// icons
+import logo from 'assets/img/logo/ip_logo.png'
+import Home from '@material-ui/icons/AccountBalance';
+import LoginBox from '@material-ui/icons/AccountBox';
+import MyList from '@material-ui/icons/Assignment';
+import MyInfo from '@material-ui/icons/AssignmentInd';
+import Favo from '@material-ui/icons/Favorite';
+import IpList from '@material-ui/icons/Dashboard';
+
 const styles = {
   list: {
     width: 250,
@@ -28,7 +37,7 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
 
 
 
-  const testFunc = (e) => {
+  const clickFunc = (e) => {
     console.log("====== testFunc ======")
     const type = e.target.parentNode.parentNode.parentNode.id;
     console.log("clicked ", type);
@@ -64,51 +73,83 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
   }
   
   const sideList = (
-    <div >
-      <div>
-        뿌잉뿌잉<br></br>
-        왕좌의 게임 <br></br>
-        2019년 4월 11일 23:00시 본방 <br></br>
-        11시라서 운동갈수있따~<br></br>
-        6시 퇴근하고 저녁먹구 <br></br>
-        빠르게 운동하고 <br></br>
-        편의점들려서 간식사구 <br></br>
-        왕좌의게임 본방 사수!! <br></br>
-        헷~<br></br>
-        결론은 커스터마이징 가능! <br></br>
-        리덕스로 로그인상태 가져와서 <br></br>
-        메뉴 목록을 바꿔주도록 하자~ <br></br>
+    <div className="drawer-wrapper">
+      <div className='drawer-top-section'>
+        <div className='drawer-top-title'>
+          <img src={logo} alt='logo' className="drawer-logo" />
+          <div >
+            상상도화지
+          </div>
+        </div>
+        
+        <div className='drawer-top-text'>
+          Draw Anything You Think.
+        </div>
+        
+        
+        
       </div>
-      <List>
-        {/* 로그인 10-0 */}
-        {['로그인/회원가입',].map((text, index) => (
-          <div id={'10-'+index} key={index}>
-            <ListItem button key={text} onClick={testFunc}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          </div>
-        ))}
-      </List>
+      <Divider />
+
+      <div>
+        # 로그인이 아닐경우 
+        
+        <List>
+          {/* 로그인 10-0 */}
+          {['로그인/회원가입',].map((text, index) => (
+            <div id={'10-'+index} key={index}>
+              <ListItem button key={text} onClick={clickFunc}>
+                <ListItemIcon><LoginBox /></ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            </div>
+          ))}
+        </List>
+      </div>
+
+
+
+      <Divider />
+      <div>
+        # 로그인 성공시<br></br>
+        <div>
+          이미지 <br></br>
+          닉네임 
+        </div>
+        <List>
+          {/* 마이페이지 20-0, 내글 20-1 즐겨찾기 20-2 */}
+          {['마이페이지', '내글', '즐겨찾기'].map((text, index) => (
+            <div id={'20-'+index} key={index}>
+              <ListItem button key={text} onClick={clickFunc}>
+                <ListItemIcon>{
+                    index === 0 ?
+                    <MyInfo /> :
+                    index === 1 ?
+                    <MyList /> :
+                    <Favo/>
+                  }</ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItem>
+            </div>
+          ))}
+        </List>
+
+      </div>
+
+      {/* import MyList from '@material-ui/icons/Assignment';
+    import MyInfo from '@material-ui/icons/AssignmentInd';
+    import Favo from '@material-ui/icons/Favorite'; */}
+
+      
+      
+      
       <Divider />
       <List>
-        {/* 마이페이지 20-0, 내글 20-1 즐겨찾기 20-2 */}
-        {['마이페이지', '내글', '즐겨찾기'].map((text, index) => (
-          <div id={'20-'+index} key={index}>
-            <ListItem button key={text} onClick={testFunc}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          </div>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {/* 마이페이지 30-0 */}
+        {/* 상상도화지 목록 30-0 */}
         {['상상도화지', ].map((text, index) => (
           <div id={'30-'+index} key={index}>
-            <ListItem button key={text} onClick={testFunc}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItem button key={text} onClick={clickFunc}>
+              <ListItemIcon><IpList/></ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           </div>
