@@ -47,6 +47,7 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
       break;
       case "20-1":
         // 내글
+        handleMoveTo('/mylist');
       break;
       case "20-2": 
         // 즐겨찾기

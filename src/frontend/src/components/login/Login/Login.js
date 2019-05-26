@@ -6,7 +6,11 @@ import './Login.css';
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
-const {naver} = window;
+
+//
+import imgKK from 'assets/img/login/ico_kakao.png'
+import imgFB from 'assets/img/login/FB.png'
+
 
 // FB - 상훈 페북계정
 // GG - 상훈 구글개발자계정
@@ -163,39 +167,59 @@ class Login extends Component {
       handleKKFail,
     } = this;
 
+    const gStyle = {
+      width: '100'
+    }
+
     return(
       <div className="login-page-wrapper">
         
-        <FacebookLogin
-          appId={fbKey}
-          autoLoad={false}
-          fields="name,email,picture,age_range"
-          scope="public_profile"
-          callback={handleFBCallback}
-          icon="fa-facebook"
-          render={renderProps => (
-            <button onClick={renderProps.onClick}>This is my custom FB button</button>
-          )}
-          cssClass="my-facebook-button-class"
-          textButton="페이스북 로그인"
-        />
+        <div className="login-btn-form login-btn-form-fb">
+          <img src={imgFB} alt='' className='login-btn-img-fb'/>
+          <FacebookLogin
+            appId={fbKey}
+            autoLoad={false}
+            fields="name,email,picture,age_range"
+            scope="public_profile"
+            callback={handleFBCallback}
+            // icon="fa-facebook"
+            // icon={imgFB}
+            render={renderProps => (
+              <button onClick={renderProps.onClick}>This is my custom FB button</button>
+            )}
+            cssClass="login-btn-common login-btn-fb"
+            textButton="Login with Facebook"
+          />
+        </div>
 
-        <GoogleLogin
-          clientId={ggKey}
-          buttonText="Login with Google"
-          onSuccess={handleGGSucc}
-          onFailure={handleGGFail}
-          cookiePolicy={'single_host_origin'}
-        />
+        
 
-        <KakaoLogin
-          jsKey={kkKey}
-          onSuccess={handleKKSucc}
-          onFailure={handleKKFail}
-          getProfile={true}
-          useDefaultStyle={true}
-          buttonText="Login with Kakao"
-        />
+        <div className="login-btn-form">
+          
+          <GoogleLogin
+            clientId={ggKey}
+            buttonText="Login with Google"
+            onSuccess={handleGGSucc}
+            onFailure={handleGGFail}
+            cookiePolicy={'single_host_origin'}
+            icon={true}
+            className='login-btn-common login-btn-gg'
+          />
+        </div>
+        
+        <div className="login-btn-form login-btn-form-kk">
+          <img src={imgKK} alt='' className='login-btn-img-fb'/>
+          <KakaoLogin
+            jsKey={kkKey}
+            onSuccess={handleKKSucc}
+            onFailure={handleKKFail}
+            getProfile={true}
+            useDefaultStyle={false}
+            buttonText="Login with Kakao"
+            className='login-btn-common login-btn-kk'
+          />
+        </div>
+        
 
         {/* <div id='naverIdLogin'></div> */}
       </div>
