@@ -38,7 +38,7 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
 
 
   const clickFunc = (e) => {
-    console.log("====== testFunc ======")
+    console.log("====== clickFunc ======")
     const type = e.target.parentNode.parentNode.parentNode.id;
     console.log("clicked ", type);
 
@@ -67,6 +67,12 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
         handleMoveTo('/list');
       break;
       default:
+        console.log("unKown type : ", type)
+        // super hardcoding
+        if ( e.target.parentNode.id === '0-0' ) {
+          console.log('type is 0-0 -> go to home')
+          handleMoveTo('/');
+        }
     }
   
 
@@ -74,10 +80,10 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
   
   const sideList = (
     <div className="drawer-wrapper">
-      <div className='drawer-top-section'>
-        <div className='drawer-top-title'>
-          <img src={logo} alt='logo' className="drawer-logo" />
-          <div >
+      <div className='drawer-top-section'  >
+        <div className='drawer-top-title' id={'0-0'}>
+          <img src={logo} alt='logo' className="drawer-logo" onClick={clickFunc} />
+          <div onClick={clickFunc}>
             상상도화지
           </div>
         </div>
