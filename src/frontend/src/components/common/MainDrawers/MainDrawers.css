@@ -1,0 +1,35 @@
+
+
+.drawer-wrapper {
+    background-color: white;
+    width: 250px;
+}
+
+.drawer-top-section {
+    padding: 1rem;
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+.drawer-top-title {
+    display: flex;
+    height: 3rem;
+    font-size: 2rem;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    color: rgb(99, 99, 99);
+
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+}
+.drawer-logo {
+    width: 2rem;
+    padding: 0.5rem;
+}
+
+.drawer-top-text {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
