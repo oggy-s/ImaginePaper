@@ -79,7 +79,8 @@ class BoardCard extends React.Component {
                 aria-favorite={this.state.favorite}
                 aria-label="즐겨찾기"
             >
-              <StarIcon />
+              {/* <StarIcon /> */}
+              <FavoriteIcon/>
             </IconButton>
           }
           title='타이틀'

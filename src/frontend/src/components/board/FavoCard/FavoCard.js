@@ -15,17 +15,17 @@ import StarIcon from '@material-ui/icons/Star';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import './FavoCard.css';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 // import CardMedia from '@material-ui/core/CardMedia';
 // import Avatar from '@material-ui/core/Avatar';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
 // import ShareIcon from '@material-ui/icons/Share';
 // import MoreVertIcon from '@material-ui/icons/MoreVert';
 // import clsx from 'clsx';
 
 const styles = theme => ({
-    card: {
-        maxWidth: '100%',
-    },
+    // card: {
+    //     maxWidth: '100%',
+    // },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -82,7 +82,8 @@ class FavoCard extends React.Component {
                         aria-favorite={this.state.favorite}
                         aria-label="즐겨찾기"
                     >
-                        <StarIcon />
+                        {/* <StarIcon /> */}
+                        <FavoriteIcon/>
                     </IconButton>
                 }
                 title='타이틀'
