@@ -173,7 +173,9 @@ class Login extends Component {
 
     return(
       <div className="login-page-wrapper">
-        
+        <div className='login-page-title'>소셜 계정으로 회원가입/로그인</div>
+        <br></br>
+        <br></br>
         <div className="login-btn-form login-btn-form-fb">
           <img src={imgFB} alt='' className='login-btn-img-fb'/>
           <FacebookLogin
@@ -188,7 +190,7 @@ class Login extends Component {
               <button onClick={renderProps.onClick}>This is my custom FB button</button>
             )}
             cssClass="login-btn-common login-btn-fb"
-            textButton="Login with Facebook"
+            textButton="페이스북 로그인"
           />
         </div>
 
@@ -198,7 +200,7 @@ class Login extends Component {
           
           <GoogleLogin
             clientId={ggKey}
-            buttonText="Login with Google"
+            buttonText="구글 로그인"
             onSuccess={handleGGSucc}
             onFailure={handleGGFail}
             cookiePolicy={'single_host_origin'}
@@ -215,7 +217,7 @@ class Login extends Component {
             onFailure={handleKKFail}
             getProfile={true}
             useDefaultStyle={false}
-            buttonText="Login with Kakao"
+            buttonText="카카오 로그인"
             className='login-btn-common login-btn-kk'
           />
         </div>

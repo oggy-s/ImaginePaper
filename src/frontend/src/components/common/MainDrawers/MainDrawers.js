@@ -15,7 +15,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 // icons
-import logo from 'assets/img/logo/ip_logo.png'
+
 import Home from '@material-ui/icons/AccountBalance';
 import LoginBox from '@material-ui/icons/AccountBox';
 import MyList from '@material-ui/icons/Assignment';
@@ -23,6 +23,9 @@ import MyInfo from '@material-ui/icons/AssignmentInd';
 import Favo from '@material-ui/icons/Favorite';
 import IpList from '@material-ui/icons/Dashboard';
 
+//imgs
+import logo from 'assets/img/logo/ip_logo.png'
+import unkown from 'assets/img/drawer/unkown.jpg'
 const styles = {
   list: {
     width: 250,
@@ -112,10 +115,16 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
       <Divider />
       <div>
         # 로그인 성공시<br></br>
-        <div>
-          이미지 <br></br>
-          닉네임 
+        <div className='drawer-login-info'>
+          <div className='drawer-login-img'>
+            {1 == 1 ? <img src={unkown} alt=''/> : <img src=''alt=''/> }
+          </div>
+          <div className='drawer-login-nick'>
+              HoonyB
+          </div>
+          
         </div>
+        {/* <Divider /> */}
         <List>
           {/* 마이페이지 20-0, 내글 20-1 즐겨찾기 20-2 */}
           {['마이페이지', '내글', '즐겨찾기'].map((text, index) => (
