@@ -38,20 +38,23 @@ const MainDrawers = ({isOpen, toggle, handleMoveTo}) => {
 
     switch(type) {
       case "10-0":
-        //
+        // 로그인 페이지
         handleMoveTo('/login');
       break;
       case "20-0":
-        //
+        // 마이페이지
+        handleMoveTo('/mypage');
       break;
       case "20-1":
-        //
+        // 내글
       break;
       case "20-2": 
-        //
+        // 즐겨찾기
+        handleMoveTo('/favolist');
       break;
       case "30-0":
-        //
+        // 상상도화지
+        handleMoveTo('/list');
       break;
       default:
     }

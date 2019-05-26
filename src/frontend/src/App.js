@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
-import { MainPage, LoginPage, MyPage, FavoListPage, PaperListPage, PaperWritePage, PaperPage, NotFoundPage } from 'pages'
+import { MainPage, LoginPage, MyPage, MyList, FavoListPage, PaperListPage, PaperWritePage, PaperPage, NotFoundPage } from 'pages'
 import  MainHeaderContainer  from 'containers/common/MainHeaderContainer'
 import './App.css';
 
@@ -20,6 +20,7 @@ class App extends Component {
           {/* <div className='app-navi'><NavLink exact to="/main" activeClassName="menu-active"> 메인</NavLink></div> */}
           <div className='app-navi'><NavLink exact to="/login" activeClassName="menu-active"> 로그인 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/mypage" activeClassName="menu-active"> 마이페이지  </NavLink></div>
+          <div className='app-navi'><NavLink exact to="/mylist" activeClassName="menu-active"> 내글  </NavLink></div>
           <div className='app-navi'><NavLink exact to="/favolist" activeClassName="menu-active">즐겨찾기 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/list" activeClassName="menu-active"> 목록 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/write" activeClassName="menu-active"> 쓰기 </NavLink></div>
@@ -35,6 +36,7 @@ class App extends Component {
 
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/mypage" component={MyPage} />
+          <Route exact path="/myList" component={MyList} />
           <Route exact path="/favolist" component={FavoListPage} />
 
           <Route exact path="/list" component={PaperListPage} />
