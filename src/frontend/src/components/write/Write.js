@@ -3,11 +3,18 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import './Write.css';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        // border: '1px solid gray',
+        marginTop: '10px',
+        marginBottom: '10px',
+        marginLeft: '10px',
+        marginRight: '10px',
     },
     textField: {
         marginLeft: theme.spacing(1),
@@ -20,26 +27,16 @@ const useStyles = makeStyles(theme => ({
     menu: {
         width: 200,
     },
+    form: {
+        border: '5px solid red'
+    },
+    button: {
+        margin: theme.spacing(1),
+    },
+    input: {
+        display: 'none',
+    },
 }));
-
-const currencies = [
-    {
-        value: 'USD',
-        label: '$',
-    },
-    {
-        value: 'EUR',
-        label: '€',
-    },
-    {
-        value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
-    },
-];
 
 const Write = () => {
 
@@ -68,17 +65,25 @@ const Write = () => {
             />
             
             <TextField
-                id="standard-full-width"
+                id="outlined-multiline-flexible"
                 label="Contents"
-                style={{ margin: 8 }}
+                multiline
+                rowsMax="20"
+                style={{ margin: 8, width:'100%' }}
                 placeholder="상상을 펼치세요!"
-                // helperText="Full width!"
-                fullWidth
+                onChange={handleChange('multiline')}
+                className={classes.textField}
                 margin="normal"
-                InputLabelProps={{
-                    shrink: true,
-                }}
+                // helperText="hello"
+                variant="outlined"
             />
+
+            <Button variant="contained" color="primary" className={classes.button}>
+                등록
+            </Button>
+            <Button variant="contained" color="secondary" className={classes.button}>
+                취소
+            </Button>
             
         </form>
     );
