@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
         border: '1px solid black',
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
+        marginTop: theme.spacing(1),
     },
 }));
 
@@ -20,10 +21,10 @@ export default function PaperSheet() {
         <div>
             <Paper className={classes.root}>
                 <Typography variant="h5" component="h3">
-                    This is a sheet of paper.
+                    내가 쓴 글 제목
         </Typography>
                 <Typography component="p">
-                    Paper can be used to build surface or other elements for your application.
+                    음 내용을 줄여보여주는게 나을까...
         </Typography>
             </Paper>
         </div>
