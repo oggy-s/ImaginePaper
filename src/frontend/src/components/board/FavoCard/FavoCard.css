@@ -1,24 +1,6 @@
 .card {
     max-width: 400;
     background-color: red;
+    color: red;
 }
-media {
-    height: 0;
-    paddingTop: '56.25%'; 
-}
-actions {
-    display: 'flex';
-}
-expand {
-    transform: 'rotate(0deg)';
-    margin-left: 'auto';
-    /* transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }); */
-}
-expandOpen {
-    transform: 'rotate(180deg)';
-}
-avatar {
-    backgroundColor: red;
-}
+

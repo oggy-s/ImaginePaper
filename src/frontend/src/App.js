@@ -24,7 +24,7 @@ class App extends Component {
           <div className='app-navi'><NavLink exact to="/favolist" activeClassName="menu-active">즐겨찾기 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/list" activeClassName="menu-active"> 목록 </NavLink></div>
           <div className='app-navi'><NavLink exact to="/write" activeClassName="menu-active"> 쓰기 </NavLink></div>
-          <div className='app-navi'><NavLink exact to="/paper" activeClassName="menu-active"> 읽기 </NavLink></div>
+          {/* <div className='app-navi'><NavLink exact to="/paper" activeClassName="menu-active"> 읽기 </NavLink></div> */}
         </div>
 
         {/* Main Header 공용으로 할까?  */}
@@ -43,7 +43,7 @@ class App extends Component {
 
           <Route exact path="/list" component={PaperListPage} />
           <Route exact path="/write" component={PaperWritePage} />
-          <Route exact path="/paper" component={PaperPage} />
+          {/* <Route exact path="/paper" component={PaperPage} /> */}
            
           <Route  component={NotFoundPage} />
         </Switch>

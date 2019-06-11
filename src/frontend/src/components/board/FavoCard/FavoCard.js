@@ -23,9 +23,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 // import clsx from 'clsx';
 
 const styles = theme => ({
-    // card: {
-    //     maxWidth: '100%',
-    // },
+    card: {
+        maxWidth: '100%',
+    },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
@@ -48,11 +48,17 @@ const styles = theme => ({
     },
     favoritePost: {
         color: '#f50057',
-    }
+    },
+    likeActive: {
+        color: '#4267b2',
+    },
+    dislikeActive: {
+        color: '#91b6ff',
+    },
 });
 
 class FavoCard extends React.Component {
-    state = { expanded: false, favorite: true };
+    state = { expanded: false, favorite: true, like: false, dislike: false};
 
     handleExpandClick = () => {
         this.setState(state => ({ expanded: !state.expanded }));
@@ -60,13 +66,27 @@ class FavoCard extends React.Component {
     handleFavoriteClick = () => {
         this.setState(state => ({ favorite: !state.favorite }));
     };
+    handleLikeClick = (e) => {
+        if (this.state.dislike) {
+            this.setState(state => ({ like: !state.like, dislike: !state.dislike }));
+        } else {
+            this.setState(state => ({ like: !state.like }));
+        }
+    };
+    handleDislikeClick = (e) => {
+        if (this.state.like) {
+            this.setState(state => ({ like: !state.like, dislike: !state.dislike }));
+        } else {
+            this.setState(state => ({ dislike: !state.dislike }));
+        }
+    };
 
     render() {
     const { classes } = this.props;
 
     return (
         
-        <Card className="card">
+        <Card className={classes.card}>
             <CardHeader
                 // avatar={
                 //   <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -94,21 +114,16 @@ class FavoCard extends React.Component {
           image="/static/images/cards/paella.jpg"
           title="Paella dish"
         /> */}
-            <CardContent>
+            {/* <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     이곳에 간단하게 내용을 보여줍니다. 무엇인지 알아야 하니까~?
                     돈까스가 먹고싶은건 저뿐인가요?
                     바삭바삭 돈까스으~~
                 </Typography>
-            </CardContent>
-            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+            </CardContent> */}
+            <Collapse in={!this.state.expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>Method:</Typography>
-                    <Typography paragraph>
-                        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-                        minutes.
-                    </Typography>
-                    <Typography paragraph>
+                    <Typography variant="body2" color="textSecondary" component="p" noWrap="true">
                         Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
                         heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
                         browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
@@ -116,27 +131,25 @@ class FavoCard extends React.Component {
                         salt and pepper, and cook, stirring often until thickened and fragrant, about 10
                         minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
                     </Typography>
-                    <Typography paragraph>
-                        Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-                        without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat
-                        to medium-low, add reserved shrimp and mussels, tucking them down into the rice, and
-                        cook again without stirring, until mussels have opened and rice is just tender, 5 to 7
-                        minutes more. (Discard any mussels that don’t open.)
-                    </Typography>
-                    <Typography>
-                        Set aside off of the heat to let rest for 10 minutes, and then serve.
-                    </Typography>
                 </CardContent>
             </Collapse>
-
             <CardActions className={classes.actions} disableActionSpacing>
-                {/* <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton> */}
-                <IconButton aria-label="Share">
+                <IconButton aria-label="Like"
+                    className={classnames(classes.root, {
+                        [classes.likeActive]: this.state.like,
+                    })}
+                    onClick={this.handleLikeClick}
+                    aria-label="Like"
+                >
                     <ThumbUpIcon />
                 </IconButton>
-                <IconButton aria-label="Share">
+                <IconButton aria-label="Dislike"
+                    className={classnames(classes.root, {
+                        [classes.dislikeActive]: this.state.dislike,
+                    })}
+                    onClick={this.handleDislikeClick}
+                    aria-label="Dislike"
+                >
                     <ThumbDownIcon />
                 </IconButton>
                 <IconButton
@@ -147,9 +160,21 @@ class FavoCard extends React.Component {
                     aria-expanded={this.state.expanded}
                     aria-label="Show more"
                 >
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon/>
                 </IconButton>
             </CardActions>
+            <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                    <Typography paragraph>
+                        Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
+                        heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
+                        browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving
+                        chicken and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion,
+                        salt and pepper, and cook, stirring often until thickened and fragrant, about 10
+                        minutes. Add saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
+                    </Typography>
+                </CardContent>
+            </Collapse>
         </Card>
     );
     }

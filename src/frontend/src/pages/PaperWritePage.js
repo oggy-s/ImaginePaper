@@ -1,9 +1,10 @@
 import React from 'react';
+import Write from '../components/write';
 
 const PaperWritePage = () => {
     return (
         <div>
-            PaperWritePage
+            <Write />
         </div>
     )
 }
